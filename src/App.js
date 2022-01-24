@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+// import logo from "./logo.svg";
+import "./App.css";
+import "bootswatch/dist/cyborg/bootstrap.min.css";
+import { Container } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "../src/Components/HomePage/HomePage";
+import NavBar from "./Components/Utils/NavBar/NavBar";
+import Articles from "./Components/ArticleCards/Articles";
+import ArticlePage from "./Components/ArticleCards/ArticlePage";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar></NavBar>
+      <Container>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<HomePage></HomePage>}></Route>
+            <Route path="/articles" element={<Articles></Articles>}></Route>
+            <Route
+              path="articles/:id"
+              element={<ArticlePage></ArticlePage>}
+            ></Route>
+          </Routes>
+        </Router>
+      </Container>
     </div>
   );
 }
