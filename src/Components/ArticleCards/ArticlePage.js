@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Col, Row, Spinner, Container } from "react-bootstrap";
-import { random_color } from "./rando-color";
+import { generate_gradient } from "./rando-color";
 import axios from "axios";
 const ArticlePage = ({ props }) => {
   const url_link = useParams();
   console.log("post Number :  ", url_link);
-  const rando_color = random_color();
-  const font_rando_color = random_color();
+
   const [articles, setArticles] = useState([{}]);
   const [error, setError] = React.useState(null);
-
+  const gradient_value = generate_gradient();
   useEffect(() => {
     axios
       .get(`https://jsonplaceholder.typicode.com/posts/${url_link.id}`)
@@ -35,8 +34,8 @@ const ArticlePage = ({ props }) => {
         style={{
           fontFamily: "Oswald",
           border: "solid 2px white",
-          backgroundColor: "#21D4FD",
-          backgroundImage: "linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)",
+          backgroundColor: gradient_value["backgroundColor"],
+          backgroundImage: gradient_value["backgroundImage"],
         }}
       >
         <br></br>
