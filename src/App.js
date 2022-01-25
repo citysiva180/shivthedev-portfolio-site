@@ -7,6 +7,7 @@ import HomePage from "../src/Components/HomePage/HomePage";
 import NavBar from "./Components/Utils/NavBar/NavBar";
 import Articles from "./Components/ArticleCards/Articles";
 import ArticlePage from "./Components/ArticleCards/ArticlePage";
+import ImageDragAndDrop from "./Components/ImageDropAndCrop/ImageDragAndDrop";
 function App() {
   return (
     <div>
@@ -19,6 +20,10 @@ function App() {
             <Route
               path="articles/:id"
               element={<ArticlePage></ArticlePage>}
+            ></Route>
+            <Route
+              path="hello"
+              element={<ImageDragAndDrop></ImageDragAndDrop>}
             ></Route>
           </Routes>
         </Router>
